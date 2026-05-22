@@ -143,7 +143,7 @@ straddle의 정반대. 변동성이 적을 것이라 판단
 
 마찬가지로, 프리미엄 좀 덜 받지만 일정 가격 변동성을 버틸 수는 있는 전략.
 
-## Spread
+## 방향성 Vertical Spread
 
 같은 콜/풋을 매수 혹은 매도하되, 행사가를 다르게하여 차익을 노리거나(Debit Spread) 프리미엄을 노리는(Credit Spread) 전략
 
@@ -266,7 +266,7 @@ Bear Put Spread
 
 ```
 [뷰]
-하락하거나 횡보할 것 같다. 상승 보호고 뭐고 그냥 큰 하락에 베팅하겠다.
+하락할 것 같다. 상승 보호고 뭐고 그냥 큰 하락에 베팅하겠다.
 콜 매도해서 얻는 프리미엄까지 더해서 풋을 매수하자
 
 * 다만 이런 하락 외에도 반대로 콜 IV가 과하게 비싸면, 콜을 팔고 풋을 사는 bearish risk reversal이 비용 측면에서 유리할 수 있다.
@@ -283,7 +283,7 @@ Bear Put Spread
 
 ```
 
-## Short Straddle의 안정화 버전 (모두 credit spread를 수취하려는 목적임)
+## 손실 제한형 범위장 전략
 
 ### Iron Condor = 낮은 풋 매수 + 중간 낮은 풋 매도 + 중간 높은 콜 매도 + 높은 콜 매수
 
@@ -292,6 +292,8 @@ Bear Put Spread
 pnl graph가 날개가 큰 새인 Condor를 닮았다고 해서
 
 [뷰]
+손실 제한한 Short Strangle
+
 특정 범위에서 가격이 움직일 것 같다. 그래서 범위 하방에 풋 매도 걸고, 범위 상방에 콜 매도 걸어서 프리미엄 받을래.
 그런데 혹시 모를 급락/급등에 대해서는 보험을 들어놔야겠다.
 
@@ -327,6 +329,8 @@ Short Strangle보다 적은 프리미엄
 pnl graph가 나비를 닮아서
 
 [뷰]
+손실 제한한 Short Straddle
+
 iron condor와 마찬가지로 특정 range에서 가격이 움직일 것 같다.
 그런데 그것보다는 좀 더 좁은 range로 좁히겠다.
 
@@ -357,6 +361,30 @@ Iron Condor보다 손익 가능 구간이 좁음
 큰 방향성 움직임에서 수익 기회 없음
 ```
 
-## Calendar Spread
+## 만기 구조 전략
+
+### Calendar Spread
 
 (일반적으로) 근월물 옵션 매도 + 원월물 옵션 매수
+= 단기 theta decay와 만기별 IV 차이를 거래
+
+### Diagonal Spread
+
+행사가도 다르고 만기도 다른 spread
+vertical spread + calendar spread의 혼합형
+
+## 8. Ratio / Tail Convexity
+
+### Call BackSpread
+
+### Put BackSpread
+
+### Ratio Spread
+
+## 합성 포지션과 Put-Call Parity
+
+### Synthetic Forward
+
+### Synthetic Stock
+
+### Put-Call Parity
