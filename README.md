@@ -1,6 +1,6 @@
 # Derivatives, Gamble, Decision Making
 
-옵션, 구조화 상품, 도박, 게임, 의사 결정 알고리즘
+옵션, 구조화 상품, 도박, 게임, 의사 결정 알고리즘, 사행성 상품 기획
 
 ## theory
 
@@ -19,6 +19,6 @@
 ## gamble
 
 - [poker solver and GTO](./poker_solver/README.md)
-- [K-Game Gambling Mechanics](./k_game_gambling/README.md)
+- [Gambling Design by K-Game](./k_game_gambling/README.md)
 
-## decision making  
+## decision making
