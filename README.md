@@ -18,7 +18,9 @@
 
 ## gamble
 
-- [poker solver and GTO](./poker_solver/README.md)
-- [Gambling Design by K-Game](./k_game_gambling/README.md)
+- [gambling product design by K-Game](./k_game_gambling/README.md)
+  <!-- - [slot machine server]() -->
 
 ## decision making
+
+- [poker solver and GTO](./poker_solver/README.md)
