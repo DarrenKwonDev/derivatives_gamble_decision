@@ -2,8 +2,9 @@
 ## 사행(도박)과 사행성
 
 
-[사행행위 등 규제 및 처벌 특례법](https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EC%82%AC%ED%96%89%ED%96%89%EC%9C%84%EB%93%B1%EA%B7%9C%EC%A0%9C%EB%B0%8F%EC%B2%98%EB%B2%8C%ED%8A%B9%EB%A1%80%EB%B2%95)
-[게임물관위원회 등급분류규정](https://www.law.go.kr/LSW/schlPubRulInfoP.do?schlPubRulSeq=2200000088951) 제 3장 사행성확 기준  
+[사행행위 등 규제 및 처벌 특례법](https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EC%82%AC%ED%96%89%ED%96%89%EC%9C%84%EB%93%B1%EA%B7%9C%EC%A0%9C%EB%B0%8F%EC%B2%98%EB%B2%8C%ED%8A%B9%EB%A1%80%EB%B2%95)  
+[게임물관위원회 등급분류규정](https://www.law.go.kr/LSW/schlPubRulInfoP.do?schlPubRulSeq=2200000088951) 제 3장 사행성확 기준
+  
 
 사행행위 등 규제 및 처벌 특례법의 2조에 따르면,
 
