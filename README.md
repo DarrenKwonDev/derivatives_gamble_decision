@@ -5,8 +5,18 @@
 ## theory
 
 - [options](./options.md)
+- [crypto options](./crypto_option.md)
 - [option strategies](./option_strategies.md)
 - [structured product](./structured_product.md)
+
+## gamble
+
+- [gambling product design by K-Game](./k_game_gambling/README.md)
+      <!-- - [slot machine server]() -->
+
+## decision making
+
+- [poker solver and GTO](./poker_solver/README.md)
 
 ## math
 
@@ -19,7 +29,7 @@
 ## gamble
 
 - [gambling product design by K-Game](./k_game_gambling/README.md)
-  <!-- - [slot machine server]() -->
+    <!-- - [slot machine server]() -->
 
 ## decision making
 

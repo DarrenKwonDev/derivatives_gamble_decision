@@ -71,6 +71,52 @@ theta exposure = 시간가치 감소/획득에 노출되어 있음
 
 ## IV(Implied Volatility)
 
-- 옵션 가격 이론에 따라 도출되는, 옵션 시장 참여자들의 바라보는 기초 자산의 변동성 (다소 심리적이고 주관적임)
-    - 공식에서 도출되었다는 점에서 부터 IV는 이미 옵션 가격에 반영된 것으로 봐야한다
+- 옵션 가격 이론에 따라 도출되는, 옵션 시장 참여자들의 바라보는 기초 자산의 변동성
+    - 옵션 가격 이론 공식에서 도출되었다는 점에서 부터 IV는 이미 옵션 가격에 반영된 것으로 봐야한다
     - 옵션에 투자한다면 실제 변동성(RV)가 IV보다 더 크게 실현될 것으로 베팅하는 것임
+    - (price → 결과)인 반면에 (IV → **기대 + 리스크 프라이싱**) 일반적으로 옵션 시장이 주식 시장보다 더 크고 정보가 많아서 옵션이 선행한다고 봄.
+
+- IV에 기반한 수식을 뽑아낼때 wq에서는 아래 같은 것들을 많이 썼음
+
+```
+implied_volatility_call // ATM call의 IV
+implied_volatility_put // ATM put의 IV
+implied_volatility_mean  // ATM 옵션의 평균 내재변동성. (call + put) / 2 랑 똑같음.
+25-delta skew = IV(25Δ put) - IV(25Δ call) // 가장 많이 씀
+skew_put = IV(OTM put) - IV(ATM)
+skew_call = IV(OTM call) - IV(ATM)
+```
+
+## IV surface
+
+변동성은 아래 두 요소로 분리해서 생각할 수 있음
+
+- **스큐(skew)**: 행사가격에 따라 변동성이 다르고
+    - OTM put IV ↑ → 하방 공포
+    - OTM call IV ↑ → 상방 투기
+- **기간 구조(term structure)**: 만기에 따라 변동성이 다르다
+    - 단기 IV ↑ → 이벤트 / 불확실성 imminent
+    - 장기 IV ↑ → 구조적 불안
+
+보통 IV surface를 그린다. Surface = 그 기대가 strike × time에 따라 어떻게 왜곡됐는지
+
+<img src="./imgs/iv_surface.jpg" />
+
+```
+X: 만기 / Y: strike / Z: IV
+```
+
+- 이걸 가지고
+    1. mispricing 잡거나
+        - IV 과대 → 옵션 overpriced → sell vol
+        - IV 과소 → buy vol
+    2. regime 읽거나
+
+        ```
+        flat → 안정 시장
+        skew deep → crash risk regime
+        term steep → event regime
+        ```
+
+    3. signal 만든다
+        - Δ surface (시간 변화) 가 중요. 갑자기 put iv가 급증한다던가, 단기 IV가 장기 IV를 역전한다던가(보통 장기에 무슨 일이 있을지 모르니 장기 IV > 단기 IV가 노멀임)
