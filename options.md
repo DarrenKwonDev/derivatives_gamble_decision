@@ -1,18 +1,21 @@
 ## payoff convexity
 
 ```
-S : 기초자산, K : 행사가라 하자,
+S : 기초자산(Spot), K : 행사가(Strike Price)라 하자, 만기까지 보유시 pnl은 다음과 같다.
 
 call 매수 : max(S - K, 0) - premium
     - call 옵션의 payoff = max(S - K, 0)
+    - 콜옵션 매수자의 pnl * -1 = 콜옵션 매도자의 pnl (콜옵션 매수자 pnl + 콜옵션 매도자 pnl = 0)
 put 매수 : max(K - S, 0) - premium
     - put 옵션의 payoff = max(K - S, 0)
+    - 풋옵션 매수자의 pnl * -1 = 풋옵션 매도자의 pnl (풋옵션 매수자 pnl + 풋옵션 매도자 pnl = 0)
 ```
 
 - 선물은 linear한 손익 그래프 형태를 보이지만 옵션의 payoff는 `convex`함.  
   따라서 작은 변동성에서는 오히려 선물보다 수익이 안날수 있지만 변동성이 크기 움직일수록 더 크게 수익을 얻을 수 있음
 - 비선형 payoff라는 말은 다른 말로 하면 `gamma exposure` 가 있다는 뜻임.  
   기초자산의 가격 움직임에 비해 파생 상품인 옵션의 가격은 델타대로만 움직이지 않고, 변동된 델타대로 움직이기 때문(델타의 기울기가 고정되어있지 않음)
+- 물론, 중간에 옵션을 반대매매를 통해 net position을 0로 만든다면, 옵션 매수가 - 옵션 매도가가 그 수익임
 
 ## 시간가치
 
@@ -22,6 +25,19 @@ put 매수 : max(K - S, 0) - premium
 ```
 
 - 내재가치를 지금 당장 옵션 권리를 실행한다고 가정하고 얻을 수 있는 payoff라고 생각하면 편함
+- 일반적으로 T(만기까지 남은 시간)가 클수록, ATM에 가까울수록, IV가 높을수록 외재 가치가 크다
+
+## option chain
+
+각 컬럼에 무엇을 표현할지는 커스텀이지만, 좌측에 콜, 가운데 행사가, 우측에 풋을 두는 건 일종의 규칙처럼 굳어짐
+
+| Call Ask | Call Bid | Call Δ | Call IV | Strike  | Put IV | Put Δ | Put Bid | Put Ask |
+| -------- | -------- | ------ | ------- | ------- | ------ | ----- | ------- | ------- |
+| 5,200    | 5,100    | 0.82   | 58%     | 90,000  | 72%    | -0.18 | 120     | 150     |
+| 3,400    | 3,300    | 0.68   | 60%     | 95,000  | 68%    | -0.32 | 320     | 360     |
+| 1,800    | 1,750    | 0.51   | 64%     | 100,000 | 64%    | -0.49 | 1,700   | 1,760   |
+| 850      | 820      | 0.34   | 70%     | 105,000 | 61%    | -0.66 | 3,250   | 3,350   |
+| 320      | 300      | 0.19   | 78%     | 110,000 | 59%    | -0.81 | 5,000   | 5,120   |
 
 ## 옵션의 가치에 의한 delta 변화
 
@@ -77,14 +93,41 @@ theta exposure = 시간가치 감소/획득에 노출되어 있음
     - (price → 결과)인 반면에 (IV → **기대 + 리스크 프라이싱**) 일반적으로 옵션 시장이 주식 시장보다 더 크고 정보가 많아서 옵션이 선행한다고 봄.
 
 - IV에 기반한 수식을 뽑아낼때 wq에서는 아래 같은 것들을 많이 썼음
+- 명확한 수식이 없음. 어디에서는 put - call을 하라고 하기도하고 순서를 바꾸기도 하고
 
 ```
 implied_volatility_call // ATM call의 IV
 implied_volatility_put // ATM put의 IV
 implied_volatility_mean  // ATM 옵션의 평균 내재변동성. (call + put) / 2 랑 똑같음.
-25-delta skew = IV(25Δ put) - IV(25Δ call) // 가장 많이 씀
-skew_put = IV(OTM put) - IV(ATM)
-skew_call = IV(OTM call) - IV(ATM)
+25-delta put skew = IV(25Δ put) - IV(25Δ call) // 가장 많이 씀
+```
+
+## volatility smile
+
+실제로는 iv smile이라고 불러야 더 맞지 않을까함.
+
+이론적 Black-Scholes에서는 모든 IV가 동일하지만(IV flat),  
+실제로는 ATM에서 IV가 제일 낮고, ATM에서 멀어질수록 양쪽으로 IV가 커지는 형태, 즉 smile shape가 보임.  
+이론에서는 returns가 정규분포라 가정하지만, 실제로는 fat tail 분포를 보이기 때문에.
+
+일반적으로 왼쪽: OTM put IV, 중앙: ATM IV, 오른쪽: OTM call IV 을 기준으로 그린다.  
+그래서 곡선이 왼쪽으로 높으면 "put이 비싸다", 오른쪽으로 높으면 "call이 비싸다"라고 말하는 것이다.
+
+또한, IV smile은 완전히 symmetric한 형태는 아님. 하방 위험을 두려워하는 경향이 큰 참여자가 많아지면 낮은 행사가쪽의 IV가 더 오름
+
+<img src="./imgs/volatility_smile.webp" />
+
+저 smile 곡선의 skew에 따라 아래 같이 구분해볼 수 있음
+
+```
+- Reverse skew(smirk)
+낮은 행사가의 IV가 더 높음 ()
+
+- Forward skew
+높은 행사가의 IV가 더 높음
+
+- Frown
+ATM 옵션에 제일 높은 smile의 반대 형태인데 현실 세계에서 보기 쉽지 않음
 ```
 
 ## IV surface
@@ -120,3 +163,8 @@ X: 만기 / Y: strike / Z: IV
 
     3. signal 만든다
         - Δ surface (시간 변화) 가 중요. 갑자기 put iv가 급증한다던가, 단기 IV가 장기 IV를 역전한다던가(보통 장기에 무슨 일이 있을지 모르니 장기 IV > 단기 IV가 노멀임)
+
+## useful tools
+
+http://www.option-price.com/  
+https://www.philadelphia-reflections.com/blog/2394.htm

@@ -7,12 +7,13 @@
 - [options](./options.md)
 - [crypto options](./crypto_option.md)
 - [option strategies](./option_strategies.md)
+- [option price](./option_price.md)
 - [structured product](./structured_product.md)
 
 ## gamble
 
 - [gambling product design by K-Game](./k_game_gambling/README.md)
-      <!-- - [slot machine server]() -->
+    <!-- - [slot machine server]() -->
 
 ## decision making
 
@@ -29,7 +30,7 @@
 ## gamble
 
 - [gambling product design by K-Game](./k_game_gambling/README.md)
-    <!-- - [slot machine server]() -->
+  <!-- - [slot machine server]() -->
 
 ## decision making
 

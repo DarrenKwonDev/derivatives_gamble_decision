@@ -383,8 +383,18 @@ vertical spread + calendar spread의 혼합형
 
 ## 합성 포지션과 Put-Call Parity
 
+### Put-Call Parity
+
+같은 기초자산, 같은 행사가, 같은 만기를 가진 콜옵션과 풋옵션 사이의 가격 관계
+
+```
+C - P = S - K·e^(-rT)
+```
+
+내재 선물가 계산 — 옵션 시장에서 역산해서 선물 공정가치 구할 수 있음  
+합성 포지션 — 콜이 비싸면 풋+선물로 합성 콜 만드는 게 더 쌈  
+미스프라이싱 탐지 — 패리티 깨지는 순간이 차익거래 신호
+
 ### Synthetic Forward
 
 ### Synthetic Stock
-
-### Put-Call Parity
