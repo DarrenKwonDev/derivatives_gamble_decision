@@ -10,10 +10,11 @@
 - [option price](./option_price.md)
 - [structured product](./structured_product.md)
 
+## onchain product research
+
 ## gamble
 
 - [gambling product design by K-Game](./k_game_gambling/README.md)
-    <!-- - [slot machine server]() -->
 
 ## decision making
 
@@ -26,11 +27,6 @@
 - [pricing_methodology](./pricing_methodology/README.md)
 - [advanced_pricing_methodology](./advanced_pricing_methodology/README.md)
 - [interest_rate_model](./interest_rate_model/README.md)
-
-## gamble
-
-- [gambling product design by K-Game](./k_game_gambling/README.md)
-  <!-- - [slot machine server]() -->
 
 ## decision making
 

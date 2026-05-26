@@ -39,30 +39,24 @@ put 매수 : max(K - S, 0) - premium
 | 850      | 820      | 0.34   | 70%     | 105,000 | 61%    | -0.66 | 3,250   | 3,350   |
 | 320      | 300      | 0.19   | 78%     | 110,000 | 59%    | -0.81 | 5,000   | 5,120   |
 
-## 옵션의 가치에 의한 delta 변화
-
-| CALL delta    | Strike Price | PUT delta    |
-| ------------- | ------------ | ------------ |
-| 0.5 ~ 1 (ITM) | 3500         | -0.5~0 (OTM) |
-| 0.5 (ATM)     | 4000         | -0.5 (ATM)   |
-| 0 ~ 0.5 (OTM) | 4500         | -1~-0.5(ITM) |
-
-- 행사가 근처에서 gamma가 제일 큼. 왜냐면 조금만 더 움직이면 ITM라서
-
 ## greeks
 
 ```
 Delta는 기초자산 가격 변화에 대한 옵션 가격의 1차 민감도입니다.
 콜옵션은 양의 delta를 가지고, 풋옵션은 음의 delta를 가집니다. 따라서 delta는 옵션 포지션이 기초자산 방향성에 얼마나 노출되어 있는지를 보여주는 지표로 볼 수 있습니다.
+- 델타가 0.4인 옵션은 기초자산 가격이 1달러 상승하면 옵션 가격이 약 0.40달러 상승할 것으로 예상된다는 의미이다.
 
 Gamma는 기초자산 가격 변화에 따라 delta가 얼마나 변하는지를 나타내는 2차 민감도입니다.
 옵션은 선형 상품이 아니기 때문에 spot이 움직이면 delta도 변합니다. 옵션 매수자는 일반적으로 long gamma 포지션이며, 큰 가격 움직임에서 유리한 convexity를 가집니다.
+- 감마가 0.01인 옵션은 기초자산 가격이 1달러 상승하면 델타가 0.01 증가할 것으로 예상된다는 의미이다.
 
 Vega는 implied volatility 변화에 대한 옵션 가격의 민감도입니다.
 옵션 매수자는 일반적으로 long vega 포지션이므로 IV가 상승하면 유리하고, 옵션 매도자는 short vega 포지션이므로 IV 상승에 불리합니다.
+- 베가가 4인 옵션은 내재변동성이 1% 상승하면 옵션 가치가 4달러 상승할 것으로 예상된다는 의미이다.
 
 Theta는 시간 경과에 따른 옵션 가치의 민감도입니다.
 옵션 매수자는 만기까지 남은 시간이 줄어들수록 시간가치가 감소하기 때문에 일반적으로 short theta이고, 옵션 매도자는 시간가치 감소를 수익원으로 삼을 수 있기 때문에 long theta입니다.
+- 세타가 -0.15달러인 옵션은 현재 하루에 0.15달러의 속도로 가치가 감소하고 있다는 의미이다. 다만 이 속도는 static하지 않음. 항상 변화함
 ```
 
 ## greeks에서의 l/s
@@ -85,6 +79,29 @@ theta exposure = 시간가치 감소/획득에 노출되어 있음
 현물 매수 → long delta, gamma 거의 없음, vega 없음, theta 없음
 ```
 
+## delta
+
+- `-1 <= delta <= 1`
+- 소수점을 떼고 부르기도 함. 25d call = 0.25 delta call
+- 콜/풋의 매도자는 각 옵션에 \* -1 을 취한다. 예를 들어 25d call 매도자는 -0.25의 델타를 가지고 있다
+- 콜옵션은 기초 자산 가격이 오를수록 이득이라서 delta가 양수, 풋옵션은 기초 자산 가격이 오를수록 손해라 delta가 음수
+- 옵션의 가치에 의한 delta 변화
+    - 깊은 ITM일수록 +-1에 가까워짐
+    - 깊은 OTM일수록 0에 가까워짐
+    - ATM은 +=0.5 정도임
+
+| CALL delta    | Strike Price | PUT delta    |
+| ------------- | ------------ | ------------ |
+| 0.5 ~ 1 (ITM) | 50           | -0.5~0 (OTM) |
+| 0.5 (ATM)     | 100          | -0.5 (ATM)   |
+| 0 ~ 0.5 (OTM) | 150          | -1~-0.5(ITM) |
+
+<img src="./imgs/option_delta_per_stk.png" width="60%">
+
+## gamma
+
+- 행사가 근처에서 gamma가 제일 큼. 왜냐면 조금만 더 움직이면 ITM라서
+
 ## IV(Implied Volatility)
 
 - 옵션 가격 이론에 따라 도출되는, 옵션 시장 참여자들의 바라보는 기초 자산의 변동성
@@ -102,7 +119,7 @@ implied_volatility_mean  // ATM 옵션의 평균 내재변동성. (call + put) /
 25-delta put skew = IV(25Δ put) - IV(25Δ call) // 가장 많이 씀
 ```
 
-## volatility smile
+## volatility smile (IV surface의 단면)
 
 실제로는 iv smile이라고 불러야 더 맞지 않을까함.
 
@@ -121,7 +138,7 @@ implied_volatility_mean  // ATM 옵션의 평균 내재변동성. (call + put) /
 
 ```
 - Reverse skew(smirk)
-낮은 행사가의 IV가 더 높음 ()
+낮은 행사가의 IV가 더 높음
 
 - Forward skew
 높은 행사가의 IV가 더 높음
@@ -130,18 +147,18 @@ implied_volatility_mean  // ATM 옵션의 평균 내재변동성. (call + put) /
 ATM 옵션에 제일 높은 smile의 반대 형태인데 현실 세계에서 보기 쉽지 않음
 ```
 
-## IV surface
+## IV surface (vol smile에 시간축)
 
 변동성은 아래 두 요소로 분리해서 생각할 수 있음
 
-- **스큐(skew)**: 행사가격에 따라 변동성이 다르고
+- **스큐(skew)**: 행사가격에 따라 변동성이 다르고 -> vol smile 곡선
     - OTM put IV ↑ → 하방 공포
     - OTM call IV ↑ → 상방 투기
 - **기간 구조(term structure)**: 만기에 따라 변동성이 다르다
     - 단기 IV ↑ → 이벤트 / 불확실성 imminent
     - 장기 IV ↑ → 구조적 불안
 
-보통 IV surface를 그린다. Surface = 그 기대가 strike × time에 따라 어떻게 왜곡됐는지
+vol smile을 시간축으로 쌓은 것을 IV surface라 본다.
 
 <img src="./imgs/iv_surface.jpg" />
 
