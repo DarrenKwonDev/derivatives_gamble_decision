@@ -10,7 +10,7 @@
 - [option price](./option_price.md)
 - [structured product](./structured_product.md)
 
-## onchain product research
+## strategies research
 
 ## gamble
 
@@ -27,7 +27,3 @@
 - [pricing_methodology](./pricing_methodology/README.md)
 - [advanced_pricing_methodology](./advanced_pricing_methodology/README.md)
 - [interest_rate_model](./interest_rate_model/README.md)
-
-## decision making
-
-- [poker solver and GTO](./poker_solver/README.md)
