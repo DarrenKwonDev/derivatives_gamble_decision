@@ -32,3 +32,7 @@ $N(x)$ : 표준정규분포의 누적분포함수 CDF (<- 고등학교 때 외�
 $e^{-rT}$ : 할인계수
 
 <img src="./imgs/bsm_formula.webp" />
+
+## Jump Diffusion Model
+
+- 갑작스러운 갭/뉴스/이벤트 리스크를 반영하여, moneyness 기준이 Jump 하는 것을 고려한 모델

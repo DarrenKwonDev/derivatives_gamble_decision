@@ -190,6 +190,22 @@ theta exposure = 시간가치 감소/획득에 노출되어 있음
         - ITM, OTM의 theta는 낮음
         - ATM의 theta는 높음
 
+## 추가 greeks
+
+### vanna
+
+```
+Vanna = ∂Delta / ∂σ
+```
+
+### charm
+
+- 시간이 지나면서 델타가 변하는 속도
+
+```
+Charm = ∂Delta / ∂Time
+```
+
 ## IV(Implied Volatility)
 
 - 옵션 가격 이론에 따라 도출되는, 옵션 시장 참여자들의 바라보는 기초 자산의 변동성
