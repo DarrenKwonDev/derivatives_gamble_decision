@@ -120,10 +120,26 @@ theta exposure = 시간가치 감소/획득에 노출되어 있음
 ## gamma
 
 - 개괄
+    - 기초자산 가격이 $1 상승했을 때 옵션 델타가 얼마나 변할 것으로 예상되는지
+    - 옵션 매수자 -> gamma > 0
+    - 옵션 매도자 -> gamma < 0
 
 - moneyness와 gamma간의 관계
+-   - ATM 부근이 delta 변화가 가장 급격해서 gamma가 가장 크다. 깊은 ITM/OTM으로 가면 gamma는 다시 0에 가까워진다
+    - 동일한 행사가와 동일한 만기일을 가진 콜옵션과 풋옵션은 같은 감마 값을 가진다.
+    - IV(내재변동성) 및/또는 DTE(잔존만기)가 훨씬 더 높은 경우에는 감마의 최고점이 기초자산 가격보다 더 높은 행사가에서 나타날 수도 있지만, 일반적으로 ATM 옵션이 가장 큰 감마를 가진다.
+
 - IV와 gamma간의 관계
+    - gamma peak는 꼭 ATM이 아님.
+    - 낮은 IV에서는 ATM 부근에서 delta 변화가 가장 급격하므로 gamma peak가 ATM 근처에 생긴다.
+    - 그런데 IV가 증가하면 가격 분포가 넓어져 살짝 OTM도 ITM로 들어올 수 있다고 생각해서 delta가 크게 움직일수도 있다는 기대 심리 때문임(gamma peak)
+
+<img src="./imgs/gamma_iv.png" width="50%" />
+
 - DTE와 gamma간의 관계
+    - DTE 낮아지면,
+        - ITM, OTM 둘다 gamma가 감소함.
+        - ATM는 작은 움직임만으로 ITM, OTM이 결정되므로 gamma가 급격히 증가함
 
 ## vega
 
