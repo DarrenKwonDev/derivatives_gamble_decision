@@ -12,6 +12,8 @@
 
 ## strategies research
 
+- [T1: 0DTE price range bet on PM](./strategies/t1.md)
+
 ## gamble
 
 - [gambling product design by K-Game](./k_game_gambling/README.md)
