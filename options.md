@@ -87,7 +87,8 @@ theta exposure = 시간가치 감소/획득에 노출되어 있음
     - 소수점을 떼고 부르기도 함. 25d call = 0.25 delta call
     - 콜/풋의 매도자는 각 옵션에 \* -1 을 취한다. 예를 들어 25d call 매도자는 -0.25의 델타를 가지고 있다
     - 콜옵션은 기초 자산 가격이 오를수록 이득이라서 delta가 양수, 풋옵션은 기초 자산 가격이 오를수록 손해라 delta가 음수
-    - DTE 직전, ATM 근처 옵션의 경우 delta를 ITM 으로 끝날 확률로 휴리스틱하게 보기도 함
+    - DTE 직전, ATM 근처 옵션의 경우 (이건 꽤 한정적인 이야기임) delta를 ITM 으로 끝날 확률로 휴리스틱하게 보기도 함
+        - https://blog.moontower.ai/lessons-from-the-50-delta-option/
 
 - moneyness와 delta간의 관계
     - 깊은 ITM일수록 +-1에 가까워짐
@@ -323,3 +324,9 @@ Vega  = (+0.12 × 1) + (+0.09 × -1) = +0.03
 
 http://www.option-price.com/  
 https://www.philadelphia-reflections.com/blog/2394.htm
+
+## blog
+
+https://epsilonoptions.com/  
+https://voltraderblog.com/  
+https://blog.moontower.ai
