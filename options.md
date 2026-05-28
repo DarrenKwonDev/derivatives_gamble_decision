@@ -313,6 +313,12 @@ Theta = (-0.08 × 1) + (-0.05 × -1) = -0.03
 Vega  = (+0.12 × 1) + (+0.09 × -1) = +0.03
 ```
 
+## term structure(만기구조)
+
+만기별로 IV가 어떻게 배열되어 있는지.
+
+보통 만기가 짧을수록 IV가 낮고 길면 IV가 높음.
+
 ## useful tools
 
 http://www.option-price.com/  
