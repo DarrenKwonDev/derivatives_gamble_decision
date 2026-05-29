@@ -14,8 +14,8 @@
 
 ## strategies research
 
-<!-- - [T1: 0DTE price range bet on PM](./strategies/t1.md)
-- [T2: vol mean reversion](./strategies/t2.md) -->
+- [T1: 0DTE price range bet on PM](./strategies/t1.md)
+- [T2: vol mean reversion](./strategies/t2.md)
 
 ## gamble design and trade gamification
 

@@ -17,14 +17,14 @@ $\sigma_{\text{annual}} = \sigma_{\text{daily}} \times \sqrt{252}$
 - 표준편차는 시간에 대해 √T 로 스케일링된다는 가정(Brownian motion 기반)
 - 한 달 동안 10% 상승했다고 한다면, 연율화된 변동성은 10% \* √12 정도 된다. 대략 34.64%
 
-## vol quadratic drag
+## vol drag, vol bonus
 
 $CAGR≈μ− \frac{1}{2} \cdot σ^2$
 
-여기서 '(산술)수익률'에 변동성이 끼치는 피해는 제곱(quadratic, $σ^2$)에 비례한다.  
+여기서 CAGR에 변동성이 끼치는 피해는 제곱(quadratic, $σ^2$)에 비례한다.  
 즉, 변동성이 2배가 되면 피해는 4배가 된다...! 변동성이 그 만큼 수익을 많이 갉아 먹는 요인이다.
 
-직관적으로는,
+이러한 제곱의 성질은 직관적으로는,
 
 - -50% 손실을 복구하기 위해서는 100%의 상승이 필요한 반면
 - 50% 수익이 원점으로 되돌아가기 위해서는 -33%의 손실만 필요하다.
@@ -32,11 +32,15 @@ $CAGR≈μ− \frac{1}{2} \cdot σ^2$
 레버리지를 과하게 쓰면 변동성이 커져서 수익률이 높아보이지만 장기적인 복리 투자를 가정했을 때 (시장에 계속 재투자 가정) CAGR는 오히려 하락할수 있다.  
 다만, 스캘핑, 인트라 데이 전량 청산과 같은 경우라면 CAGR는 큰 의미가 없다. 그냥 레버리지를 써서 트레이드 당 수익을 높이는게 더 낫다.
 
-vol drag는:
+여기서 주의할 점이 vol drag는 기대값(mean)을 깎는 것이 아니다.  
+vol drag는 내가 실제로 경험할 가능성이 가장 높은 결과(median outcome)를 깎는다. 그래서 체감 CAGR이 낮아진다.  
+이는 vol로 인해 이득을 볼 수도 있다는 것(vol bonus)를 암시함.
 
-median
-skewness
-distribution
+예를들어, x2배 레버리지 ETF 상품의 경우 아래와 같이 vol bonus/drag를 계산해볼 수 있다.
+
+```
+vol bonus/drag = cumulative 2x ETF return - 2 × cumulative underlying return
+```
 
 ## 로그 수익률과 옵션에서의 거리 개념
 
